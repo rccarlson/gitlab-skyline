@@ -182,12 +182,12 @@ def main():
     print("Fetching contributions from Gitlab...")
 
     semaphore = asyncio.Semaphore(max_requests)
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(
-        asyncio.wait(
-            [get_contributions(semaphore, domain, username, token, date, contribution_matrix) for date in
-             all_dates_in_year(year)]))
-    loop.close()
+    async def gather_contributions():
+        await asyncio.gather(*[
+            get_contributions(semaphore, domain, username, token, date, contribution_matrix)
+            for date in all_dates_in_year(year)
+        ])
+    asyncio.run(gather_contributions())
 
     print("Generating STL...")
     generate_skyline_stl(username, year, contribution_matrix)
