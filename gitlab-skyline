@@ -8,8 +8,7 @@ import subprocess
 from calendar import monthrange
 
 import aiohttp
-from solid import *
-from solid.utils import *
+from solid2 import *
 import os
 
 __author__ = "Félix Gómez"
