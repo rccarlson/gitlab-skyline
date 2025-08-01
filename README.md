@@ -106,3 +106,7 @@ I love openSCAD for a long time but there are some old well known issues related
 # Thanks!
 
 I hope you like it!
+
+# Notes for this fork
+
+The original repo appears abandoned and a lot of the code no longer works. This fork replaces the broken libraries and deprecated functions.
